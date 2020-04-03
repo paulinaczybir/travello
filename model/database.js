@@ -10,7 +10,7 @@ const con = mysql.createConnection({
   host: DB_HOST || "127.0.0.1",
   user: DB_USER || "root",
   password: DB_PASS,
-  database: DB_NAME || "",
+  database: DB_NAME || "travello_db",
   multipleStatements: true
 });
 
@@ -19,10 +19,10 @@ con.connect(function(err) {
   console.log("Connected!");
 
   let sql =
-    "DROP TABLE if exists newTravel; CREATE TABLE newTravel( id INT NOT NULL AUTO_INCREMENT, destination TEXT NOT NULL, startingDate DATE NOT NULL, endDate DATE NOT NULL, necessaryDocuments TEXT NOT NULL, outwardJourneyDate DATETIME NOT NULL, outwardJourneyLocation TEXT NOT NULL, outwardJourneyticket TEXT NOT NULL, returnJourneyDate DATETIME NOT NULL, returnJourneyLocation TEXT NOT NULL, returnJourneyticket TEXT NOT NULL, hotelName TEXT NOT NULL, checkInDate DATE NOT NULL, checkOutDate DATE NOT NULL, hotelLocation TEXT NOT NULL, attractions TEXT NOT NULL, restaurants TEXT NOT NULL, events TEXT NOT NULL, carPickUpDate DATETIME NOT NULL, carPickUpLocation TEXT NOT NULL, carReturnDate DATETIME NOT NULL, carReturnLocation TEXT NOT NULL, notes TEXT NOT NULL, PRIMARY KEY (`id`));";
+    "DROP TABLE if exists allTrips; CREATE TABLE allTrips( id INT NOT NULL AUTO_INCREMENT, destination TEXT NULL, startingDate DATE NULL, endDate DATE NULL, necessaryDocuments TEXT NULL, outwardJourneyDate DATETIME NULL, outwardJourneyLocation TEXT NULL, outwardJourneyticket TEXT NULL, returnJourneyDate DATETIME NULL, returnJourneyLocation TEXT NULL, returnJourneyticket TEXT NULL, hotelName TEXT NULL, checkInDate DATE NULL, checkOutDate DATE NULL, hotelLocation TEXT NULL, attractions TEXT NULL, restaurants TEXT NULL, events TEXT NULL, carPickUpDate DATETIME NULL, carPickUpLocation TEXT NULL, carReturnDate DATETIME NULL, carReturnLocation TEXT NULL, notes TEXT NULL, PRIMARY KEY (`id`));";
   con.query(sql, function(err, result) {
     if (err) throw err;
-    console.log("Table creation `students` was successful!");
+    console.log("Table creation allTrips was successful!");
 
     console.log("Closing...");
   });
