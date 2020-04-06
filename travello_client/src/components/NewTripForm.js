@@ -5,7 +5,11 @@ export default class NewTripForm extends Component {
     super(props)
     this.state = {
       destination: "",
-      date: ""
+      departureDate: "",
+      returnDate: "",
+      necessaryDocuments: "",
+      hotelName: "",
+      hotelLocation: ""
     }
   }
 
@@ -18,7 +22,11 @@ export default class NewTripForm extends Component {
       },
       body: JSON.stringify({
         destination: this.state.destination,
-        date: this.state.date
+        departureDate: this.state.departureDate,
+        returnDate: this.state.returnDate,
+        necessaryDocuments: this.state.necessaryDocuments,
+        hotelName: this.state.hotelName,
+        hotelLocation: this.state.hotelLocation
       }),
     })
     .then((response) => response.json())
@@ -46,8 +54,16 @@ export default class NewTripForm extends Component {
          <form onSubmit={this.addNewTrip}>
           <label>Destination:</label><br />
           <input onChange={this.handleInputChange} type="text" id="destination" name="destination" value={this.state.destination} /><br />
-          <label>Date:</label><br />
-          <input onChange={this.handleInputChange} type="text" id="date" name="date" value={this.state.date} /><br />
+          <label>Departure Date:</label><br />
+          <input onChange={this.handleInputChange} type="text" id="departureDate" name="departureDate" value={this.state.departureDate} /><br />
+          <label>Return Date:</label><br />
+          <input onChange={this.handleInputChange} type="text" id="returnDate" name="returnDate" value={this.state.returnDate} /><br />
+          <label>Necessary Documents:</label><br />
+          <input onChange={this.handleInputChange} type="text" id="necessaryDocuments" name="necessaryDocuments" value={this.state.necessaryDocuments} /><br />
+          <label>Hotel:</label><br />
+          <input onChange={this.handleInputChange} type="text" id="hotelName" name="hotelName" value={this.state.hotelName} /><br />
+          <label>Hotel Location:</label><br />
+          <input onChange={this.handleInputChange} type="text" id="hotelLocation" name="hotelLocation" value={this.state.hotelLocation} /><br />
           <input type="submit" value="Add your trip" />
         </form>
         <button onClick={this.props.returnToMain}>See all trips</button>

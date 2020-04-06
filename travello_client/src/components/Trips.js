@@ -47,7 +47,12 @@ export default class Trips extends Component {
             return (
               <li key={index}>
               <span>
-                {trip.destination} {trip.date}
+                <div>You are travelling to: {trip.destination}</div> 
+                <div>Departure Date: {trip.departureDate} </div>
+                <div>Return Date: {trip.returnDate} </div>
+                <div>Documents you need: {trip.necessaryDocuments}</div>
+                <div>Hotel: {trip.hotelName} </div>
+                <div>Hotel Location: {trip.hotelLocation} </div>
               </span>
               <button onClick={() => this.deleteTrip(trip.id)}>
                 Delete
