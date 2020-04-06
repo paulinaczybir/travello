@@ -4,12 +4,25 @@ export default class Editing extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      tripEditMode: []
     }
   }
 
-  editTrip = i => {
-    i.preventDefault();
-    fetch(`/users/${i}`, {
+  componentDidMount() {
+    this.getTripById(this.props.tripId);
+  }
+
+  getTripById = id => {
+    fetch(`/users/${this.props.tripId}`)
+      .then(response => response.json())
+      .then(response => {
+        this.setState({ tripEditMode: response });
+      });
+  };
+
+  /*editTrip = event => {
+    event.preventDefault();
+    fetch(`/users/${this.props.tripId}`, {
       method: "PUT",
       headers: {
         'Content-Type': 'application/json',
@@ -22,14 +35,14 @@ export default class Editing extends Component {
     .catch((error) => {
       console.error('Error:', error);
     });
-  }
+  } */
 
   render() {
     return (
       <div>
       Editing mode
         <div>
-          {this.props.tripId}
+          {this.state.tripEditMode.destination}
         </div>
         <button onClick={this.props.returnToMain}>Cancel</button>
       </div>

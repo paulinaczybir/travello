@@ -31,7 +31,7 @@ router.get("/:id", function(req, res, next) {
 //INSERT 
 router.post("/", function(req, res, next) {
   // req.body === {destination: "Madrid"}
-  db(`INSERT INTO allTrips (destination) VALUES ('${req.body.destination}')`
+  db(`INSERT INTO allTrips (destination, date) VALUES ('${req.body.destination}', '${req.body.date}' )`
   )
   .then(results => {
     getTrips(res)

@@ -47,7 +47,7 @@ export default class Trips extends Component {
             return (
               <li key={index}>
               <span>
-                {trip.destination}
+                {trip.destination} {trip.date}
               </span>
               <button onClick={() => this.deleteTrip(trip.id)}>
                 Delete

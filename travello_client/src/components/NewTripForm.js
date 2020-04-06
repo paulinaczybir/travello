@@ -4,7 +4,8 @@ export default class NewTripForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      destination: ""
+      destination: "",
+      date: ""
     }
   }
 
@@ -15,7 +16,10 @@ export default class NewTripForm extends Component {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({destination: this.state.destination}),
+      body: JSON.stringify({
+        destination: this.state.destination,
+        date: this.state.date
+      }),
     })
     .then((response) => response.json())
     .then((data) => {this.setState({allTrips: data})
@@ -42,6 +46,8 @@ export default class NewTripForm extends Component {
          <form onSubmit={this.addNewTrip}>
           <label>Destination:</label><br />
           <input onChange={this.handleInputChange} type="text" id="destination" name="destination" value={this.state.destination} /><br />
+          <label>Date:</label><br />
+          <input onChange={this.handleInputChange} type="text" id="date" name="date" value={this.state.date} /><br />
           <input type="submit" value="Add your trip" />
         </form>
         <button onClick={this.props.returnToMain}>See all trips</button>

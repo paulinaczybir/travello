@@ -28,7 +28,7 @@ con.connect(function(err) {
   }); */
 
     let sql =
-      "DROP TABLE if exists allTrips; CREATE TABLE allTrips( id INT NOT NULL AUTO_INCREMENT, destination TEXT NULL, PRIMARY KEY (`id`));";
+      "DROP TABLE if exists allTrips; CREATE TABLE allTrips( id INT NOT NULL AUTO_INCREMENT, destination TEXT NULL, date TEXT NULL, PRIMARY KEY (`id`));";
     con.query(sql, function(err, result) {
       if (err) throw err;
       console.log("Table creation allTrips was successful!"); 
