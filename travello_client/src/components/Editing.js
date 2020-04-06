@@ -44,7 +44,7 @@ export default class Editing extends Component {
         <div>
           {this.state.tripEditMode.destination}
         </div>
-        <button onClick={this.props.returnToMain}>Cancel</button>
+        <button className="btn btn-secondary" onClick={this.props.returnToMain}>Cancel</button>
       </div>
     )
   }

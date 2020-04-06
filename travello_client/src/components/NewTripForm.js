@@ -50,7 +50,7 @@ export default class NewTripForm extends Component {
 
   render() {
     return (
-      <div>
+      <div /*className="form-group"*/>
          <form onSubmit={this.addNewTrip}>
           <label>Destination:</label><br />
           <input onChange={this.handleInputChange} type="text" id="destination" name="destination" value={this.state.destination} /><br />
@@ -64,9 +64,9 @@ export default class NewTripForm extends Component {
           <input onChange={this.handleInputChange} type="text" id="hotelName" name="hotelName" value={this.state.hotelName} /><br />
           <label>Hotel Location:</label><br />
           <input onChange={this.handleInputChange} type="text" id="hotelLocation" name="hotelLocation" value={this.state.hotelLocation} /><br />
-          <input type="submit" value="Add your trip" />
+          <input className="btn btn-secondary" type="submit" value="Add your trip" />
         </form>
-        <button onClick={this.props.returnToMain}>See all trips</button>
+        <button className="btn btn-outline-secondary" onClick={this.props.returnToMain}>See all trips</button>
       </div>
     )
   }

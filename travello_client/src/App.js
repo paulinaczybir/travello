@@ -52,7 +52,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="container">
         <header>
           <h1>Travello</h1>
         </header>
