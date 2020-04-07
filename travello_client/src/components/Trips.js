@@ -36,12 +36,11 @@ export default class Trips extends Component {
       });
     }
 
-  
-
   render() {
     return (
       <div>
-        <h3>Welcome to Travello! Keep all of your trip details in one place and enjoy stress-free travelling!</h3>
+        <h3>Welcome to Travello!</h3>
+        <p>Keep all of your trip details in one place and enjoy stress-free travelling!</p>
         <button id="newTripBtn" className="btn btn-secondary btn-lg" onClick={() => this.props.addTripView()}>Create new trip</button>
         <div className="container">
           <div className="row"> 
@@ -49,7 +48,7 @@ export default class Trips extends Component {
               return (
                 <div key={index} className="col-4">
                   <div className="tripDisplay shadow rounded border">
-                    <div><span className="label">Travell Destination: </span>{trip.destination}</div> 
+                    <div><span className="label">Travel Destination: </span>{trip.destination}</div> 
                     <div><span className="label">Departure Date: </span>{trip.departureDate} </div>
                     <div><span className="label">Return Date: </span>{trip.returnDate} </div>
                     <div><span className="label">Documents Needed: </span>{trip.necessaryDocuments}</div>

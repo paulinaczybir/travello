@@ -18,15 +18,6 @@ con.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
 
-  /*let sql =
-    "DROP TABLE if exists allTrips; CREATE TABLE allTrips( id INT NOT NULL AUTO_INCREMENT, destination TEXT NULL, departureDate DATE NULL, returnDate DATE NULL, necessaryDocuments TEXT NULL, outwardJourneyDate DATETIME NULL, outwardJourneyLocation TEXT NULL, outwardJourneyticket TEXT NULL, returnJourneyDate DATETIME NULL, returnJourneyLocation TEXT NULL, returnJourneyticket TEXT NULL, hotelName TEXT NULL, checkInDate DATE NULL, checkOutDate DATE NULL, hotelLocation TEXT NULL, attractions TEXT NULL, restaurants TEXT NULL, events TEXT NULL, carPickUpDate DATETIME NULL, carPickUpLocation TEXT NULL, carReturnDate DATETIME NULL, carReturnLocation TEXT NULL, notes TEXT NULL, PRIMARY KEY (`id`));";
-  con.query(sql, function(err, result) {
-    if (err) throw err;
-    console.log("Table creation allTrips was successful!"); 
-
-    console.log("Closing...");
-  }); */
-
     let sql =
       "DROP TABLE if exists allTrips; CREATE TABLE allTrips( id INT NOT NULL AUTO_INCREMENT, destination TEXT NULL, departureDate TEXT NULL, returnDate TEXT NULL, necessaryDocuments TEXT NULL, hotelName TEXT NULL, hotelLocation TEXT NULL, PRIMARY KEY (`id`));";
     con.query(sql, function(err, result) {

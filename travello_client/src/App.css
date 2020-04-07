@@ -8,7 +8,7 @@ header {
 h1 {
   font-size: 100px;
   text-align: center;
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Raleway", Times, serif;
 }
 
 h3 {
@@ -21,9 +21,13 @@ h4 {
   margin-bottom: 20px;
 }
 
+p {
+  font-size: larger;
+}
+
 #link {
-  margin-top: 15px;
-  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 15px;
 }
 
 #newTripBtn {
