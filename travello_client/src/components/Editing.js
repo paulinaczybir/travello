@@ -21,7 +21,6 @@ export default class Editing extends Component {
     fetch(`/users/${this.props.tripId}`)
       .then(res => res.json())
       .then(response => {
-        console.log(`this is response`, response);
         this.setState({
           editDestination: response.destination,
           editDepartureDate: response.departureDate,
