@@ -51,23 +51,25 @@ export default class NewTripForm extends Component {
 
   render() {
     return (
-      <div className="form-group">
-         <form onSubmit={this.addNewTrip}>
-          <label>Destination:</label><br />
-          <input onChange={this.handleInputChange} className="form-control" type="text" id="destination" name="destination" value={this.state.destination} /><br />
-          <label>Departure Date:</label><br />
-          <input onChange={this.handleInputChange} className="form-control" type="text" id="departureDate" name="departureDate" value={this.state.departureDate} /><br />
-          <label>Return Date:</label><br />
-          <input onChange={this.handleInputChange} className="form-control" type="text" id="returnDate" name="returnDate" value={this.state.returnDate} /><br />
-          <label>Necessary Documents:</label><br />
-          <input onChange={this.handleInputChange} className="form-control" type="text" id="necessaryDocuments" name="necessaryDocuments" value={this.state.necessaryDocuments} /><br />
-          <label>Hotel:</label><br />
-          <input onChange={this.handleInputChange} className="form-control" type="text" id="hotelName" name="hotelName" value={this.state.hotelName} /><br />
-          <label>Hotel Location:</label><br />
-          <input onChange={this.handleInputChange} className="form-control" type="text" id="hotelLocation" name="hotelLocation" value={this.state.hotelLocation} /><br />
-          <input className="btn btn-secondary" type="submit" value="Add your trip" />
-        </form>
-        <button id="link" className="btn btn-link btn-lg" onClick={this.props.returnToMain}>See all trips</button>
+      <div>
+        <button id="link" className="btn btn-link btn-lg" onClick={this.props.returnToMain}>⟵ See all trips</button>
+        <div className="form-group">
+          <form onSubmit={this.addNewTrip}>
+            <label>Destination:</label><br />
+            <input onChange={this.handleInputChange} className="form-control" type="text" id="destination" name="destination" value={this.state.destination} /><br />
+            <label>Departure Date:</label><br />
+            <input onChange={this.handleInputChange} className="form-control" type="text" id="departureDate" name="departureDate" value={this.state.departureDate} /><br />
+            <label>Return Date:</label><br />
+            <input onChange={this.handleInputChange} className="form-control" type="text" id="returnDate" name="returnDate" value={this.state.returnDate} /><br />
+            <label>Necessary Documents:</label><br />
+            <input onChange={this.handleInputChange} className="form-control" type="text" id="necessaryDocuments" name="necessaryDocuments" value={this.state.necessaryDocuments} /><br />
+            <label>Hotel:</label><br />
+            <input onChange={this.handleInputChange} className="form-control" type="text" id="hotelName" name="hotelName" value={this.state.hotelName} /><br />
+            <label>Hotel Location:</label><br />
+            <input onChange={this.handleInputChange} className="form-control" type="text" id="hotelLocation" name="hotelLocation" value={this.state.hotelLocation} /><br />
+            <input className="btn btn-secondary" type="submit" value="Add your trip" />
+          </form>
+        </div>
       </div>
     )
   }

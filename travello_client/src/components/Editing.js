@@ -71,25 +71,26 @@ export default class Editing extends Component {
   render() {
     return (
       <div>
+        <button id="link" className="btn btn-link btn-lg" onClick={this.props.returnToMain}>⟵ Back to your trips</button>
         <h4>Here you can edit your trip details.</h4>
-        <div>
+        <div className="form-group">
         <form onSubmit={this.saveChanges}>
           <label>Destination:</label><br />
-          <input onChange={this.handleInputChange} type="text" id="editDestination" name="editDestination" defaultValue={this.state.editDestination} /><br />
+          <input onChange={this.handleInputChange} className="form-control" type="text" id="editDestination" name="editDestination" defaultValue={this.state.editDestination} /><br />
           <label>Departure Date:</label><br />
-          <input onChange={this.handleInputChange} type="text" id="editDepartureDate" name="editDepartureDate" defaultValue={this.state.editDepartureDate} /><br />
+          <input onChange={this.handleInputChange} className="form-control" type="text" id="editDepartureDate" name="editDepartureDate" defaultValue={this.state.editDepartureDate} /><br />
           <label>Return Date:</label><br />
-          <input onChange={this.handleInputChange} type="text" id="editReturnDate" name="editReturnDate" defaultValue={this.state.editReturnDate} /><br />
+          <input onChange={this.handleInputChange} className="form-control" type="text" id="editReturnDate" name="editReturnDate" defaultValue={this.state.editReturnDate} /><br />
           <label>Necessary Documents:</label><br />
-          <input onChange={this.handleInputChange} type="text" id="editNecessaryDocuments" name="editNecessaryDocuments" defaultValue={this.state.editNecessaryDocuments} /><br />
+          <input onChange={this.handleInputChange} className="form-control" type="text" id="editNecessaryDocuments" name="editNecessaryDocuments" defaultValue={this.state.editNecessaryDocuments} /><br />
           <label>Hotel:</label><br />
-          <input onChange={this.handleInputChange} type="text" id="editHotelName" name="editHotelName" defaultValue={this.state.editHotelName} /><br />
+          <input onChange={this.handleInputChange} className="form-control" type="text" id="editHotelName" name="editHotelName" defaultValue={this.state.editHotelName} /><br />
           <label>Hotel Location:</label><br />
-          <input onChange={this.handleInputChange} type="text" id="editHotelLocation" name="editHotelLocation" defaultValue={this.state.editHotelLocation} /><br />
-          <input className="btn btn-secondary" type="submit" value="Save your changes" />
+          <input onChange={this.handleInputChange} className="form-control" type="text" id="editHotelLocation" name="editHotelLocation" defaultValue={this.state.editHotelLocation} /><br />
+          <input className="btn btn-secondary btn-lg" type="submit" value="Save your changes" />
+          <button className="btn btn-secondary btn-lg" onClick={this.props.returnToMain}>Cancel</button>
         </form>
         </div>
-        <button id="link" className="btn btn-link btn-lg" onClick={this.props.returnToMain}>Back to your trips</button>
       </div>
     )
   }

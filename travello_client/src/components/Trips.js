@@ -41,32 +41,31 @@ export default class Trips extends Component {
   render() {
     return (
       <div>
+        <h3>Welcome to Travello! Keep all of your trip details in one place and enjoy stress-free travelling!</h3>
+        <button id="newTripBtn" className="btn btn-secondary btn-lg" onClick={() => this.props.addTripView()}>Create new trip</button>
         <div className="container">
           <div className="row"> 
             {this.state.allTrips.map((trip, index) => {
               return (
                 <div key={index} className="col-4">
-                <span className="border">
-                <span>
-                  <div>You are travelling to: {trip.destination}</div> 
-                  <div>Departure Date: {trip.departureDate} </div>
-                  <div>Return Date: {trip.returnDate} </div>
-                  <div>Documents you need: {trip.necessaryDocuments}</div>
-                  <div>Hotel: {trip.hotelName} </div>
-                  <div>Hotel Location: {trip.hotelLocation} </div>
-                </span>
+                  <div className="tripDisplay shadow rounded border">
+                    <div><span className="label">Travell Destination: </span>{trip.destination}</div> 
+                    <div><span className="label">Departure Date: </span>{trip.departureDate} </div>
+                    <div><span className="label">Return Date: </span>{trip.returnDate} </div>
+                    <div><span className="label">Documents Needed: </span>{trip.necessaryDocuments}</div>
+                    <div><span className="label">Hotel: </span>{trip.hotelName} </div>
+                    <div><span className="label">Hotel Location: </span>{trip.hotelLocation} </div>
+                  </div>
                 <button className="btn btn-outline-danger" onClick={() => this.deleteTrip(trip.id)}>
                   Delete
                 </button>
                 <button className="btn btn-outline-secondary" onClick={() => this.props.editTrip(trip.id)}>
                   Edit
                 </button>
-                </span>
                 </div>
               )
             })}
             </div>
-          <button className="btn btn-secondary" onClick={() => this.props.addTripView()}>Create new trip</button>
         </div>
       </div>
     )}
