@@ -1,5 +1,6 @@
 header {
-  background-image: url('/bcgimg.jpg');
+  background-image: url('/sea.jpg');
+  background-position: center;
   height: 200px;
   text-align: center;
   font-size: large;
