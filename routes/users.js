@@ -23,7 +23,7 @@ router.get("/", function(req, res, next) {
 router.get("/:id", function(req, res, next) {
   db(`SELECT * FROM allTrips WHERE id=${req.params.id};`)
   .then(results => {
-    res.send(results.data);
+    res.send(results.data[0]);
   })
   .catch(err => res.status(500).send(err));
 });
@@ -41,7 +41,7 @@ router.post("/", function(req, res, next) {
 
 //UPDATE
 router.put("/:id", function(req, res, next) {
-  db(`UPDATE allTrips SET destination='${req.body.destination}' WHERE id=${req.params.id};`
+  db(`UPDATE allTrips SET destination='${req.body.destination}', departureDate='${req.body.departureDate}', returnDate='${req.body.returnDate}', necessaryDocuments='${req.body.necessaryDocuments}', hotelName='${req.body.hotelName}', hotelLocation='${req.body.hotelLocation}' WHERE id=${req.params.id};`
   )
   .then(results => {
     getTrips(res)
