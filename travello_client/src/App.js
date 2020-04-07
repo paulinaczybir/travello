@@ -52,11 +52,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div>
         <header>
           <h1>Travello</h1>
         </header>
-        <div>
+        <div className="container">
           {this.toggleView()}
         </div>
       </div>

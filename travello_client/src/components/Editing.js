@@ -55,6 +55,7 @@ export default class Editing extends Component {
     .catch((error) => {
       console.error('Error:', error);
     });
+    this.props.returnToMain();
   } 
 
   handleInputChange = event => {
@@ -88,7 +89,7 @@ export default class Editing extends Component {
           <input className="btn btn-secondary" type="submit" value="Save your changes" />
         </form>
         </div>
-        <button className="btn btn-secondary" onClick={this.props.returnToMain}>Back to your trips</button>
+        <button id="link" className="btn btn-link btn-lg" onClick={this.props.returnToMain}>Back to your trips</button>
       </div>
     )
   }

@@ -1,2 +1,15 @@
-.App {
+header {
+  background-image: url('/bcgimg.jpg');
+  height: 200px;
+  text-align: center;
+  font-size: large;
+}
+
+h1 {
+  font-size: 100px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+#link {
+  padding: 20px;
 }
