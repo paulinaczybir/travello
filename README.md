@@ -38,9 +38,10 @@ Schema below is the actual one I was working on, to simplyify even more.
 ## Future features
 
 1. Display only travel destination and date (and some grafic) after user click the box all details will be revield
-2. Log in form
-3. Map for individual trip to show location of hotel, car rental etc.
-4. User can create wish list/ bucket list/ travel inspirations
+2. Sort trips by date (upcoming first)
+3. Log in form
+4. Map for individual trip to show location of hotel, car rental etc.
+5. User can create wish list/ bucket list/ travel inspirations
 
 ## Credit
 
