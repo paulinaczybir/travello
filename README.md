@@ -16,7 +16,7 @@ This schema shows what kind of user input I was planning to get at the beginning
 
 Schema below is the actual one I was working on, to simplyify even more.
 
-![Image of database schema](databaseSchema.png)
+![Image of database schema](actualDatabaseSchema.png)
 
 ## API routes plan
 
@@ -32,8 +32,14 @@ Schema below is the actual one I was working on, to simplyify even more.
 
 ## Dependencies 
 
-1. Run yarn install in project directory. This will install server's project dependencies such as Express.
-2. cd client and yarn install. This will install clientdependencies (React). 
+1. Run `yarn install` in project directory. This will install server's project dependencies such as Express.
+2. `cd client` and `yarn install`. This will install client dependencies (React).
+
+## Database preperation
+
+1. Create MySQL database.
+2. In your root project folder create *.env* file to keep information about mySQL autentication, DB_HOST, DB_USER, DB_NAME, DB_PASS. In file *database.js* update information according to info in your *.env* file.
+3. To create table that will represent the same table I used you need to run `npm run migrate` or `yarn migrate` in your terminal. You can see definition of this table in *database.js* file.
 
 ## Future features
 
