@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
+import AddFlight from './AddFlight';
 
 export default class Editing extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       editDestination: "",
       editDepartureDate: "",
@@ -90,6 +91,7 @@ export default class Editing extends Component {
           <button className="btn btn-secondary btn-lg" onClick={this.props.returnToMain}>Cancel</button>
         </form>
         </div>
+        <AddFlight tripId={this.props.tripId} />
       </div>
     )
   }

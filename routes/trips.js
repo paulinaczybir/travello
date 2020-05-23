@@ -3,7 +3,7 @@ var router = express.Router();
 const db = require("../model/helper");
 
 function getTrips(res) {
-  db("SELECT * FROM allTrips ORDER BY id ASC;")
+  db("SELECT * FROM trips ORDER BY id ASC;")
   .then(results => {
     res.send(results.data);
   })
@@ -12,7 +12,7 @@ function getTrips(res) {
 
 //GET trips 
 router.get("/", function(req, res, next) {
-  db("SELECT * FROM allTrips ORDER BY id ASC;")
+  db("SELECT * FROM trips ORDER BY id ASC;")
   .then(results => {
     res.send(results.data);
   })
@@ -21,17 +21,17 @@ router.get("/", function(req, res, next) {
 
 //GET one trip by id
 router.get("/:id", function(req, res, next) {
-  db(`SELECT * FROM allTrips WHERE id=${req.params.id};`)
+  db(`SELECT * FROM trips WHERE id=${req.params.id};`)
   .then(results => {
     res.send(results.data[0]);
   })
   .catch(err => res.status(500).send(err));
 });
 
-//INSERT 
+//INSERT new trip
 router.post("/", function(req, res, next) {
   // req.body === {destination: "Madrid"}
-  db(`INSERT INTO allTrips (destination, departureDate, returnDate, necessaryDocuments, hotelName, hotelLocation) VALUES ('${req.body.destination}', '${req.body.departureDate}', '${req.body.returnDate}', '${req.body.necessaryDocuments}', '${req.body.hotelName}', '${req.body.hotelLocation}' )`
+  db(`INSERT INTO trips (destination, departureDate, returnDate, necessaryDocuments, hotelName, hotelLocation) VALUES ('${req.body.destination}', '${req.body.departureDate}', '${req.body.returnDate}', '${req.body.necessaryDocuments}', '${req.body.hotelName}', '${req.body.hotelLocation}' )`
   )
   .then(results => {
     getTrips(res)
@@ -41,7 +41,7 @@ router.post("/", function(req, res, next) {
 
 //UPDATE
 router.put("/:id", function(req, res, next) {
-  db(`UPDATE allTrips SET destination='${req.body.destination}', departureDate='${req.body.departureDate}', returnDate='${req.body.returnDate}', necessaryDocuments='${req.body.necessaryDocuments}', hotelName='${req.body.hotelName}', hotelLocation='${req.body.hotelLocation}' WHERE id=${req.params.id};`
+  db(`UPDATE trips SET destination='${req.body.destination}', departureDate='${req.body.departureDate}', returnDate='${req.body.returnDate}', necessaryDocuments='${req.body.necessaryDocuments}', hotelName='${req.body.hotelName}', hotelLocation='${req.body.hotelLocation}' WHERE id=${req.params.id};`
   )
   .then(results => {
     getTrips(res)
@@ -52,13 +52,19 @@ router.put("/:id", function(req, res, next) {
 
 //DELETE a trip from the DB
 router.delete("/:id", function(req, res, next) {
-  db(`DELETE FROM allTrips WHERE id=${req.params.id}`)
+  db(`DELETE FROM trips WHERE id=${req.params.id}`)
     .then(results => {
       getTrips(res);
     })
   .catch(err => res.status(500).send(err));
 });
 
+//INSERT a flight
+router.post("/:tripId/flights", function(req, res) {
+  db(`INSERT INTO flights (tripId, flightNumber, departureAirport, arrivalAirport, departureTime, arrivalTime, airline, reservationId) VALUES (${req.params.tripId}, '${req.body.flightNumber}', '${req.body.departureAirport}', '${req.body.arrivalAirport}', ${req.body.departureTime}, ${req.body.arrivalTime}, '${req.body.airline}', '${req.body.reservationId}')`)
+  .then(results => {res.send({error: null})})
+  .catch(err => res.status(500).send({error: err}));
+})
 
 
 module.exports = router;
