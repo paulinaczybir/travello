@@ -18,13 +18,20 @@ con.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
 
-    let sql =
-      "DROP TABLE if exists allTrips; CREATE TABLE allTrips( id INT NOT NULL AUTO_INCREMENT, destination TEXT NULL, departureDate TEXT NULL, returnDate TEXT NULL, necessaryDocuments TEXT NULL, hotelName TEXT NULL, hotelLocation TEXT NULL, PRIMARY KEY (`id`));";
-    con.query(sql, function(err, result) {
-      if (err) throw err;
-      console.log("Table creation allTrips was successful!"); 
-  
-      console.log("Closing...");
+    let sql = [
+      "DROP TABLE if exists flights;",
+      "DROP TABLE if exists trips;", 
+      "CREATE TABLE trips (id bigint NOT NULL AUTO_INCREMENT,destination TEXT NULL,departureDate TEXT NULL,returnDate TEXT NULL,necessaryDocuments TEXT NULL,hotelName TEXT NULL,hotelLocation TEXT NULL,PRIMARY KEY (id));",
+      "CREATE TABLE flights (id bigint NOT NULL AUTO_INCREMENT, tripId bigint NOT NULL, flightNumber TEXT NULL, departureAirport TEXT NULL, arrivalAirport TEXT NULL, departureTime TIMESTAMP NULL, arrivalTime TIMESTAMP NULL, airline varchar(255) NULL, reservationId varchar(255) NULL, PRIMARY KEY (id), " + 
+      "constraint flights_fk0 FOREIGN KEY (tripId) REFERENCES trips(id) on update cascade on delete cascade);"
+    ]
+
+    sql.forEach(e => { 
+      con.query(e, function(err, result) {
+        if (err) throw err;
+        console.log("Tables creation was successful!"); 
+      });
     });
-  con.end();
+    console.log("Closing...");
+    con.end();
 });
