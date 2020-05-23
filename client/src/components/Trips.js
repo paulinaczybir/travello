@@ -13,7 +13,7 @@ export default class Trips extends Component {
   }
 
   getTrips = () => {
-    fetch("/users")
+    fetch("/trips")
       .then(response => response.json())
       .then(response => {
         this.setState({ allTrips: response });
@@ -22,7 +22,7 @@ export default class Trips extends Component {
 
 
   deleteTrip = i => {
-    fetch(`/users/${i}`, {
+    fetch(`/trips/${i}`, {
       method: "DELETE"
     })
       .then(res => res.json())

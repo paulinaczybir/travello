@@ -15,7 +15,7 @@ export default class NewTripForm extends Component {
 
   addNewTrip = (event) => {
     event.preventDefault();
-    fetch("/users", {
+    fetch("/trips", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',

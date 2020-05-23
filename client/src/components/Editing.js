@@ -18,7 +18,7 @@ export default class Editing extends Component {
   }
 
   getTripById = id => {
-    fetch(`/users/${this.props.tripId}`)
+    fetch(`/trips/${this.props.tripId}`)
       .then(res => res.json())
       .then(response => {
         this.setState({
@@ -34,7 +34,7 @@ export default class Editing extends Component {
 
   saveChanges = event => {
     event.preventDefault();
-    fetch(`/users/${this.props.tripId}`, {
+    fetch(`/trips/${this.props.tripId}`, {
       method: "PUT",
       headers: {
         'Content-Type': 'application/json',
