@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import AddFlight from './AddFlight';
+import Flights from './Flights';
 
 export default class Editing extends Component {
   constructor(props) {
@@ -91,7 +91,7 @@ export default class Editing extends Component {
           <button className="btn btn-secondary btn-lg" onClick={this.props.returnToMain}>Cancel</button>
         </form>
         </div>
-        <AddFlight tripId={this.props.tripId} />
+        <Flights tripId={this.props.tripId}/>
       </div>
     )
   }

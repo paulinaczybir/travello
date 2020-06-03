@@ -24,6 +24,7 @@ class AddFlight extends Component {
     })
   }
 
+
   addFlight = event => {
     event.preventDefault();
     fetch(`trips/${this.props.tripId}/flights`, {
@@ -32,7 +33,9 @@ class AddFlight extends Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(this.state), 
-    }) 
+    })
+    .then(res => res.json())
+    .then(this.props.updateFlights) 
   }
 
   render() {
