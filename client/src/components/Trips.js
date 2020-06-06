@@ -39,18 +39,15 @@ export default class Trips extends Component {
 
   render() {
     return (
-      <div className="container">
-        <h3>Welcome to Travello!</h3>
-        <p>Keep all of your trip details in one place and enjoy stress-free travelling!</p>
+      <div className="trips-container">
         <Link to='/trips/new'>
-        <button id="newTripBtn" className="btn btn-secondary btn-lg">Create new trip</button>
+        <button id="new-trip-btn" className="btn btn-secondary btn-lg">Create new trip</button>
         </Link>
-        <div className="container">
-          <div className="row"> 
+          <div className="trip-details-container">
             {this.state.allTrips.map((trip, index) => {
               return (
-                <div key={index} className="col-4">
-                  <div className="tripDisplay shadow rounded border">
+                <div key={index} className="trip-display shadow rounded border">
+                  <div>
                     <div><span className="label">Travel Destination: </span>{trip.destination}</div> 
                     <div><span className="label">Departure Date: </span>{trip.departureDate} </div>
                     <div><span className="label">Return Date: </span>{trip.returnDate} </div>
@@ -69,8 +66,7 @@ export default class Trips extends Component {
                 </div>
               )
             })}
-            </div>
-        </div>
+          </div>
       </div>
     )}
  }
