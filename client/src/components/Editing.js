@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Flights from './Flights';
+import { Link } from 'react-router-dom';
 
 export default class Editing extends Component {
   constructor(props) {
@@ -55,7 +56,6 @@ export default class Editing extends Component {
     .catch((error) => {
       console.error('Error:', error);
     });
-    this.props.returnToMain();
   } 
 
   handleInputChange = event => {
@@ -70,8 +70,10 @@ export default class Editing extends Component {
 
   render() {
     return (
-      <div>
-        <button id="link" className="btn btn-link btn-lg" onClick={this.props.returnToMain}>⟵ Back to your trips</button>
+      <div className="container">
+        <Link to="/trips">
+          <button id="link" className="btn btn-link btn-lg">⟵ Back to your trips</button>
+        </Link>
         <h4>Here you can edit your trip details.</h4>
         <div className="form-group">
         <form onSubmit={this.saveChanges}>

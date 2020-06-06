@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 
 export default class Trips extends Component {
   constructor(props) {
@@ -38,10 +39,12 @@ export default class Trips extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <h3>Welcome to Travello!</h3>
         <p>Keep all of your trip details in one place and enjoy stress-free travelling!</p>
-        <button id="newTripBtn" className="btn btn-secondary btn-lg" onClick={() => this.props.addTripView()}>Create new trip</button>
+        <Link to='/trips/new'>
+        <button id="newTripBtn" className="btn btn-secondary btn-lg">Create new trip</button>
+        </Link>
         <div className="container">
           <div className="row"> 
             {this.state.allTrips.map((trip, index) => {
@@ -58,9 +61,11 @@ export default class Trips extends Component {
                 <button className="btn btn-outline-danger" onClick={() => this.deleteTrip(trip.id)}>
                   Delete
                 </button>
-                <button className="btn btn-outline-secondary" onClick={() => this.props.editTrip(trip.id)}>
-                  Edit
-                </button>
+                <Link to="/trips/edit">
+                  <button className="btn btn-outline-secondary" onClick={() => this.props.editTrip(trip.id)}>
+                   Edit
+                  </button>
+                </Link>
                 </div>
               )
             })}

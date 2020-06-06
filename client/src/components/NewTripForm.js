@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 
 export default class NewTripForm extends Component {
   constructor(props) {
@@ -35,7 +36,6 @@ export default class NewTripForm extends Component {
     .catch((error) => {
       console.error('Error:', error);
     });
-    this.props.returnToMain();
   }
 
 
@@ -51,8 +51,10 @@ export default class NewTripForm extends Component {
 
   render() {
     return (
-      <div>
-        <button id="link" className="btn btn-link btn-lg" onClick={this.props.returnToMain}>⟵ See all trips</button>
+      <div className="container">
+        <Link to="/trips">
+          <button id="link" className="btn btn-link btn-lg">⟵ See all trips</button>
+        </Link>
         <div className="form-group">
           <form onSubmit={this.addNewTrip}>
             <label>Destination:</label><br />

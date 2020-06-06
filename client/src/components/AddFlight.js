@@ -27,7 +27,7 @@ class AddFlight extends Component {
 
   addFlight = event => {
     event.preventDefault();
-    fetch(`trips/${this.props.tripId}/flights`, {
+    fetch(`/trips/${this.props.tripId}/flights`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
