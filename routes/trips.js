@@ -11,11 +11,26 @@ function getTrips(res) {
 } 
 
 
-//GET trips 
+//GET trips with flights
 router.get("/", function(req, res, next) {
   db("SELECT * FROM trips ORDER BY id ASC;")
   .then(results => {
-    res.send(results.data);
+    let trips = {};
+    for (trip of results.data) {
+      trip.flights = [];
+      trips[trip.id] = trip;
+    }
+    db(`SELECT * FROM flights;`)
+    .then(flights => {
+      for (flight of flights.data) {
+        trips[flight.tripId].flights.push(flight);
+      }
+      let result = [];
+      for (tripId in trips) {
+        result.push(trips[tripId]);
+      }
+      res.send(result);
+    })
   })
   .catch(err => res.status(500).send(err));
 });
@@ -62,7 +77,9 @@ router.delete("/:id", function(req, res, next) {
 
 //INSERT a flight
 router.post("/:tripId/flights", function(req, res) {
-  db(`INSERT INTO flights (tripId, flightNumber, departureAirport, arrivalAirport, departureTime, arrivalTime, airline, reservationId) VALUES (${req.params.tripId}, '${req.body.flightNumber}', '${req.body.departureAirport}', '${req.body.arrivalAirport}', ${req.body.departureTime}, ${req.body.arrivalTime}, '${req.body.airline}', '${req.body.reservationId}')`)
+  const departureTime = req.body.departureTime ? `'${req.body.departureTime}'` : null;
+  const arrivalTime = req.body.arrivalTime ? `'${req.body.arrivalTime}'` : null;
+  db(`INSERT INTO flights (tripId, flightNumber, departureAirport, arrivalAirport, departureTime, arrivalTime, airline, reservationId) VALUES (${req.params.tripId}, '${req.body.flightNumber}', '${req.body.departureAirport}', '${req.body.arrivalAirport}', ${departureTime}, ${arrivalTime}, '${req.body.airline}', '${req.body.reservationId}')`)
   .then(result => {
     return db(`SELECT * FROM flights WHERE tripId=${req.params.tripId} ORDER BY id ASC;`);
   })

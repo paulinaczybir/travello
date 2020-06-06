@@ -1,3 +1,11 @@
+:root {
+  --color-1: rgba(140, 65, 79, 1);
+  --color-2: rgba(84, 102, 140, 1);
+  --color-3: rgba(149, 187, 191, 1);
+  --color-4: rgba(242, 198, 159, 1);
+  --color-5: rgba(242, 172, 147, 1);
+}
+
 header {
   background-image: url('/karaiby4-wide-full.jpg');
   background-position: center;
@@ -41,6 +49,10 @@ p {
   font-size: large;
 }
 
+nav {
+  background-color: var(--color-2);
+}
+
 .trips-container {
   padding: 4rem;
 }
@@ -57,5 +69,51 @@ p {
 
 .trip-display {
   grid-column-end: span 6;
-  padding: 25px;
+}
+
+.trip-display > div {
+  border-bottom: 1px solid #ccc;
+}
+
+.trip-header {
+  text-align: center;
+  padding: 2rem;
+}
+
+.trip-destination {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.trip-flight {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  column-gap: 0.5rem;
+  padding: 0.7rem;
+}
+
+.plane-icon {
+  font-size: 1.5rem;
+}
+
+.flight-stop {
+  text-align: center;
+}
+
+.flight-time {
+  font-size: 1rem;
+  color: #888;
+}
+
+.trip-hotel {
+  padding: 0.7rem;
+}
+
+.hotel-name {
+  margin-right: 0.5rem;
+}
+
+.trip-hotel .fa-hotel {
+  font-size: 1.5rem;
+  margin-right: 1rem;
 }

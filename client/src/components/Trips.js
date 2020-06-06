@@ -34,8 +34,46 @@ export default class Trips extends Component {
       })
       .catch(error => {
         console.log(error);
-      });
-    }
+      }); 
+  }
+
+  tripDetails = (trip, index) => {
+    return (
+      <div key={index} className="trip-display shadow rounded border">
+        <div className="trip-header">
+          <span className="trip-destination">{trip.destination}</span><br/>
+          <span className="trip-dates">{trip.departureDate} - {trip.returnDate}</span>
+        </div>
+        {trip.flights.slice(0,2).map((flight, index) => <div className="trip-flight">
+          <div className="flight-stop">
+            <span className="flight-airport">{flight.departureAirport}</span><br/>
+            <span className="flight-time">{flight.departureTime}</span>
+          </div>
+          <div className="plane-icon">
+            <i className="fas fa-plane"></i>
+          </div>
+          <div className="flight-stop">
+            <span className="flight-airport">{flight.arrivalAirport}</span><br/>
+            <span className="flight-time">{flight.arrivalTime}</span>
+          </div>
+        </div>)}
+        <div className="trip-hotel">
+          <i className="fas fa-hotel"></i>
+          <span className="hotel-name">{trip.hotelName}</span>
+          <span className="hotel-location">{trip.hotelLocation}</span>
+        </div>
+        <button className="btn btn-outline-danger" onClick={() => this.deleteTrip(trip.id)}>
+          Delete
+        </button>
+        <Link to="/trips/edit">
+          <button className="btn btn-outline-secondary" onClick={() => this.props.editTrip(trip.id)}>
+            Edit
+          </button>
+        </Link>
+      </div>
+    )
+  }
+  
 
   render() {
     return (
@@ -44,28 +82,7 @@ export default class Trips extends Component {
         <button id="new-trip-btn" className="btn btn-secondary btn-lg">Create new trip</button>
         </Link>
           <div className="trip-details-container">
-            {this.state.allTrips.map((trip, index) => {
-              return (
-                <div key={index} className="trip-display shadow rounded border">
-                  <div>
-                    <div><span className="label">Travel Destination: </span>{trip.destination}</div> 
-                    <div><span className="label">Departure Date: </span>{trip.departureDate} </div>
-                    <div><span className="label">Return Date: </span>{trip.returnDate} </div>
-                    <div><span className="label">Documents Needed: </span>{trip.necessaryDocuments}</div>
-                    <div><span className="label">Hotel: </span>{trip.hotelName} </div>
-                    <div><span className="label">Hotel Location: </span>{trip.hotelLocation} </div>
-                  </div>
-                <button className="btn btn-outline-danger" onClick={() => this.deleteTrip(trip.id)}>
-                  Delete
-                </button>
-                <Link to="/trips/edit">
-                  <button className="btn btn-outline-secondary" onClick={() => this.props.editTrip(trip.id)}>
-                   Edit
-                  </button>
-                </Link>
-                </div>
-              )
-            })}
+            {this.state.allTrips.map(this.tripDetails)}
           </div>
       </div>
     )}
